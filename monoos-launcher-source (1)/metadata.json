@@ -1,0 +1,6 @@
+{
+  "name": "MonoOS Launcher",
+  "description": "A lightweight Android launcher combining iOS-grade spring physics and frosted glass with Nothing OS monochromatic restraint.",
+  "requestFramePermissions": ["camera"],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

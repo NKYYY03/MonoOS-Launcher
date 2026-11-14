@@ -1,0 +1,72 @@
+@import "tailwindcss";
+@custom-variant dark (&:where(.dark, .dark *));
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+    --font-dot: 'DotGothic16', monospace;
+    --font-mono: 'JetBrains Mono', monospace;
+  }
+
+  html,
+  body {
+    font-family: var(--font-sans);
+    overscroll-behavior: none;
+    -webkit-tap-highlight-color: transparent;
+  }
+}
+
+.font-dot {
+  font-family: var(--font-dot);
+  letter-spacing: 0.04em;
+}
+
+.font-mono-tabular {
+  font-family: var(--font-mono);
+  font-variant-numeric: tabular-nums;
+}
+
+/* Subtle Nothing OS dot-matrix canvas background pattern */
+.bg-dot-matrix-dark {
+  background-color: #070708;
+  background-image: radial-gradient(rgba(255, 255, 255, 0.12) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+.bg-dot-matrix-light {
+  background-color: #f2f2f4;
+  background-image: radial-gradient(rgba(15, 15, 18, 0.12) 1px, transparent 1px);
+  background-size: 14px 14px;
+}
+
+/* Hide scrollbars cleanly while keeping swipe/scroll native */
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* iOS Edit Mode subtle organic jiggle */
+@keyframes icon-jiggle {
+  0% {
+    transform: rotate(-1.4deg) translate3d(0, 0, 0);
+  }
+  50% {
+    transform: rotate(1.4deg) translate3d(0, -1px, 0);
+  }
+  100% {
+    transform: rotate(-1.4deg) translate3d(0, 0, 0);
+  }
+}
+
+.animate-jiggle {
+  animation: icon-jiggle 0.26s ease-in-out infinite;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-jiggle {
+    animation: none;
+  }
+}
