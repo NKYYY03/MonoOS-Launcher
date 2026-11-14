@@ -35,8 +35,11 @@ jobs:
           distribution: temurin
           java-version: 17
 
-      - name: Setup Android SDK
-        uses: android-actions/setup-android@v3
+      - name: Prepare Android SDK
+        run: |
+          SDK_DIR="${ANDROID_HOME:-/usr/local/lib/android/sdk}"
+          echo "ANDROID_HOME=$SDK_DIR" >> "$GITHUB_ENV"
+          find "$SDK_DIR" -name sdkmanager -type f | head -n 1 | xargs -r -I{} bash -c 'yes | "{}" --licenses > /dev/null 2>&1 || true'
 
       - name: Setup Gradle
         uses: gradle/actions/setup-gradle@v4
@@ -52,5 +55,3 @@ jobs:
         with:
           name: MonoOS-Launcher-debug-apk
           path: "monoos-launcher-source (1)/android/app/build/outputs/apk/debug/app-debug.apk"
-          
-          
